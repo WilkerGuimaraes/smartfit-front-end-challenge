@@ -10,8 +10,8 @@ export default {
         "gotham-light": ["Gotham Light", "sans-serif"],
       },
       colors: {
-        "dark-grey": "#333333",
-        "light-grey": "#808080",
+        darkGrey: "#333333",
+        lightGrey: "#808080",
         yellow: "#FFB612",
         red: "#dc0a17",
         green: "#2FC022",
