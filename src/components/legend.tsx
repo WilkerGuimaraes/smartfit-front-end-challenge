@@ -10,7 +10,7 @@ import forbiddenLockerroom from "../assets/images/forbidden-lockerroom.png";
 
 export function Legend() {
   return (
-    <div className="m-12 py-16 px-8 bg-zinc-100 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
+    <div className="m-10 py-16 px-8 bg-zinc-100 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
       <div className="flex flex-col gap-6 text-center">
         <h2 className="text-2xl font-gotham-black">Máscara</h2>
         <div className="flex justify-around">
@@ -67,7 +67,7 @@ export function Legend() {
 
       <div className="flex flex-col gap-6 text-center">
         <h2 className="text-2xl font-gotham-black">Vestiários</h2>
-        <div className="flex justify-center gap-6">
+        <div className="flex justify-center gap-4">
           <div className="flex flex-col items-center">
             <img
               src={requiredLockerroom}
