@@ -1,11 +1,9 @@
-import iconHour from "../assets/images/icon-hour.png";
-
 export function Form() {
   return (
     <div className="rounded-lg border-[6px] border-zinc-200 p-6 mx-8">
       <form>
         <div className="flex items-center gap-4">
-          <img src={iconHour} alt="iconHour" className="size-12" />
+          <img src="/icon-hour.png" alt="iconHour" className="size-12" />
           <h2 className="text-2xl text-light-grey">Horário</h2>
         </div>
 

@@ -1,13 +1,3 @@
-import requiredMask from "../assets/images/required-mask.png";
-import recommendedMask from "../assets/images/recommended-mask.png";
-import requiredTowel from "../assets/images/required-towel.png";
-import recommendedTowel from "../assets/images/recommended-towel.png";
-import partialFountain from "../assets/images/partial-fountain.png";
-import forbiddenFountain from "../assets/images/forbidden-fountain.png";
-import requiredLockerroom from "../assets/images/required-lockerroom.png";
-import partialLockerroom from "../assets/images/partial-lockerroom.png";
-import forbiddenLockerroom from "../assets/images/forbidden-lockerroom.png";
-
 interface LegendsImage {
   url: string;
   alt: string;
@@ -24,12 +14,12 @@ export const LEGEND: Legend[] = [
     description: "Máscara",
     images: [
       {
-        url: requiredMask,
+        url: "/required-mask.png",
         alt: "required-mask",
         description: "Obrigatório",
       },
       {
-        url: recommendedMask,
+        url: "/recommended-mask.png",
         alt: "recommended-mask",
         description: "Recomendado",
       },
@@ -39,12 +29,12 @@ export const LEGEND: Legend[] = [
     description: "Toalha",
     images: [
       {
-        url: requiredTowel,
+        url: "/required-towel.png",
         alt: "required-towel",
         description: "Obrigatório",
       },
       {
-        url: recommendedTowel,
+        url: "/recommended-towel.png",
         alt: "recommended-towel",
         description: "Recomendado",
       },
@@ -54,12 +44,12 @@ export const LEGEND: Legend[] = [
     description: "Bebedouro",
     images: [
       {
-        url: partialFountain,
+        url: "/partial-fountain.png",
         alt: "partial-fountain",
         description: "Parcial",
       },
       {
-        url: forbiddenFountain,
+        url: "/not_allowed-fountain.png",
         alt: "forbidden-fountain",
         description: "Proibido",
       },
@@ -69,17 +59,17 @@ export const LEGEND: Legend[] = [
     description: "Vestiários",
     images: [
       {
-        url: requiredLockerroom,
+        url: "/allowed-lockerroom.png",
         alt: "required-lockerroom",
         description: "Liberado",
       },
       {
-        url: partialLockerroom,
+        url: "/partial-lockerroom.png",
         alt: "partial-lockerroom",
         description: "Parcial",
       },
       {
-        url: forbiddenLockerroom,
+        url: "/closed-lockerroom.png",
         alt: "forbidden-lockerroom",
         description: "Proibido",
       },
