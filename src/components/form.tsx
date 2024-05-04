@@ -1,7 +1,31 @@
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const formSchema = z.object({
+  period: z.string().min(1, "Selecione um período."),
+  showClosed: z.boolean(),
+});
+
+type FormSchemaData = z.infer<typeof formSchema>;
+
 export function Form() {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormSchemaData>({
+    resolver: zodResolver(formSchema),
+  });
+
+  const onSubmit = (data: FormSchemaData) => {
+    console.log(data);
+  };
+
   return (
     <div className="rounded-lg border-[6px] border-zinc-200 p-6 mx-8">
-      <form>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex items-center gap-4">
           <img src="/icon-hour.png" alt="iconHour" className="size-12" />
           <h2 className="text-2xl text-light-grey">Horário</h2>
@@ -15,7 +39,7 @@ export function Form() {
           <div className="flex items-center gap-3">
             <input
               type="radio"
-              name="period"
+              {...register("period")}
               value="morning"
               className="size-6 hover:cursor-pointer"
             />
@@ -28,7 +52,7 @@ export function Form() {
           <div className="flex items-center gap-3">
             <input
               type="radio"
-              name="period"
+              {...register("period")}
               value="aftermoon"
               className="size-6 hover:cursor-pointer"
             />
@@ -41,7 +65,7 @@ export function Form() {
           <div className="flex items-center gap-3">
             <input
               type="radio"
-              name="period"
+              {...register("period")}
               value="night"
               className="size-6 hover:cursor-pointer"
             />
@@ -52,7 +76,11 @@ export function Form() {
 
         <div className="flex flex-col items-center gap-6 py-8 lg:flex-row lg:justify-between">
           <div className="flex items-center">
-            <input type="checkbox" className="size-6 hover:cursor-pointer" />
+            <input
+              type="checkbox"
+              {...register("showClosed")}
+              className="size-6 hover:cursor-pointer"
+            />
             <span className="ml-3 font-gotham-book text-xl text-dark-grey">
               Exibir unidades fechadas
             </span>
@@ -63,10 +91,20 @@ export function Form() {
         </div>
 
         <div className="flex flex-col gap-6 lg:flex-row lg:justify-center">
-          <button className="px-[20%] py-5 bg-yellow font-gotham-black text-xl rounded-lg lg:px-28">
+          <button
+            type="submit"
+            className="px-[20%] py-5 bg-yellow font-gotham-black text-xl rounded-lg lg:px-28"
+          >
             ENCONTRAR UNIDADE
           </button>
-          <button className="px-20 py-5 border-[3px] font-gotham-black text-xl rounded-lg lg:px-44">
+          {errors.period && (
+            <span className="text-red">{errors.period.message}</span>
+          )}
+          <button
+            type="submit"
+            onClick={() => reset()}
+            className="px-20 py-5 border-[3px] font-gotham-black text-xl rounded-lg lg:px-44"
+          >
             LIMPAR
           </button>
         </div>
