@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useContext } from "react";
+import { LocationsContext } from "../contexts/LocationsContext";
 
 const formSchema = z.object({
   period: z.string().min(1, "Selecione um período."),
@@ -10,6 +12,8 @@ const formSchema = z.object({
 type FormSchemaData = z.infer<typeof formSchema>;
 
 export function Form() {
+  const { locationState } = useContext(LocationsContext);
+
   const {
     register,
     handleSubmit,
@@ -86,7 +90,8 @@ export function Form() {
             </span>
           </div>
           <p className="ml-2 font-gotham-book text-xl text-dark-grey">
-            Resultados encontrados: <span className="font-gotham-black">0</span>
+            Resultados encontrados:{" "}
+            <span className="font-gotham-black">{locationState.length}</span>
           </p>
         </div>
 

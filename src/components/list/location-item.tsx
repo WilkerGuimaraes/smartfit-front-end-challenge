@@ -18,7 +18,7 @@ export function LocationItem({ location }: LocationItemProps) {
       {/* TODO: verificar alternativas */}
       <div
         className="text-brand-lightGrey"
-        dangerouslySetInnerHTML={{ __html: location.content }}
+        dangerouslySetInnerHTML={{ __html: location.content || "" }}
       ></div>
 
       <div className="flex gap-2 mt-4">
