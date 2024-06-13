@@ -5,14 +5,14 @@ import { useContext } from "react";
 import { LocationsContext } from "../contexts/LocationsContext";
 
 const formSchema = z.object({
-  period: z.string().min(1, "Selecione um período."),
+  period: z.string(),
   showClosed: z.boolean(),
 });
 
 type FormSchemaData = z.infer<typeof formSchema>;
 
 export function Form() {
-  const { locationState } = useContext(LocationsContext);
+  const { filteredLocations, onSubmit } = useContext(LocationsContext);
 
   const {
     register,
@@ -21,15 +21,19 @@ export function Form() {
     formState: { errors },
   } = useForm<FormSchemaData>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      period: "",
+      showClosed: true,
+    },
   });
 
-  const onSubmit = (data: FormSchemaData) => {
-    console.log(data);
+  const handleFilterLocations = (data: FormSchemaData) => {
+    onSubmit(data);
   };
 
   return (
     <div className="rounded-lg border-[6px] border-zinc-200 p-6 mx-8">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(handleFilterLocations)}>
         <div className="flex items-center gap-4">
           <img src="/icon-hour.png" alt="iconHour" className="size-12" />
           <h2 className="text-2xl text-light-grey">Horário</h2>
@@ -57,10 +61,10 @@ export function Form() {
             <input
               type="radio"
               {...register("period")}
-              value="aftermoon"
+              value="afternoon"
               className="size-6 hover:cursor-pointer"
             />
-            <label htmlFor="aftermoon">Tarde</label>
+            <label htmlFor="afternoon">Tarde</label>
           </div>
           <span className="ml-auto">12:01 às 18:00</span>
         </div>
@@ -91,7 +95,9 @@ export function Form() {
           </div>
           <p className="ml-2 font-gotham-book text-xl text-dark-grey">
             Resultados encontrados:{" "}
-            <span className="font-gotham-black">{locationState.length}</span>
+            <span className="font-gotham-black">
+              {filteredLocations.length}
+            </span>
           </p>
         </div>
 
