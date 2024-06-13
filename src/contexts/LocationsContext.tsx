@@ -8,6 +8,7 @@ interface LocationContextType {
   locationState: ILocation[];
   filteredLocations: ILocation[];
   onSubmit: ({ period, showClosed }: FilterProps) => void;
+  onReset: () => void;
 }
 
 interface LocationProviderProps {
@@ -75,12 +76,15 @@ export function LocationProvider({ children }: LocationProviderProps) {
     });
 
     setFilteredLocations(filteredResult);
-    console.log(filteredResult);
+  }
+
+  function onReset() {
+    setFilteredLocations([]);
   }
 
   return (
     <LocationsContext.Provider
-      value={{ locationState, filteredLocations, onSubmit }}
+      value={{ locationState, filteredLocations, onSubmit, onReset }}
     >
       {children}
     </LocationsContext.Provider>

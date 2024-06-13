@@ -12,7 +12,7 @@ const formSchema = z.object({
 type FormSchemaData = z.infer<typeof formSchema>;
 
 export function Form() {
-  const { filteredLocations, onSubmit } = useContext(LocationsContext);
+  const { filteredLocations, onSubmit, onReset } = useContext(LocationsContext);
 
   const {
     register,
@@ -112,8 +112,11 @@ export function Form() {
             <span className="text-red">{errors.period.message}</span>
           )}
           <button
-            type="submit"
-            onClick={() => reset()}
+            type="button"
+            onClick={() => {
+              reset();
+              onReset();
+            }}
             className="px-20 py-5 border-[3px] font-gotham-black text-xl rounded-lg lg:px-44"
           >
             LIMPAR
