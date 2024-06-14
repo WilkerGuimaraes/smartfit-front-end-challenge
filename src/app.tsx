@@ -6,6 +6,7 @@ import { Legend } from "./components/legend";
 import { Locations } from "./components/list/locations";
 
 import { LocationProvider } from "./contexts/LocationsContext";
+import { Description } from "./components/description";
 
 const queryClient = new QueryClient();
 
@@ -14,9 +15,12 @@ export function App() {
     <QueryClientProvider client={queryClient}>
       <Header />
       <LocationProvider>
-        <Form />
-        <Legend />
-        <Locations />
+        <div className="flex flex-col mx-auto max-w-[1280px]">
+          <Description />
+          <Form />
+          <Legend />
+          <Locations />
+        </div>
       </LocationProvider>
     </QueryClientProvider>
   );

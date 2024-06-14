@@ -43,7 +43,7 @@ export function Form() {
           Qual período quer treinar?
         </h1>
 
-        <div className="flex py-4 border-b-2 font-gotham-book text-xl text-light-grey">
+        <div className="flex py-4 border-b-2 font-gotham-book text-lg text-light-grey sm:text-2xl">
           <div className="flex items-center gap-3">
             <input
               type="radio"
@@ -56,7 +56,7 @@ export function Form() {
           <span className="ml-auto">06:00 às 12:00</span>
         </div>
 
-        <div className="flex py-4 border-b-2 font-gotham-book text-xl text-light-grey">
+        <div className="flex py-4 border-b-2 font-gotham-book text-lg text-light-grey sm:text-2xl">
           <div className="flex items-center gap-3">
             <input
               type="radio"
@@ -69,7 +69,7 @@ export function Form() {
           <span className="ml-auto">12:01 às 18:00</span>
         </div>
 
-        <div className="flex py-4 border-b-2 font-gotham-book text-xl text-light-grey">
+        <div className="flex py-4 border-b-2 font-gotham-book text-lg text-light-grey sm:text-2xl">
           <div className="flex items-center gap-3">
             <input
               type="radio"
@@ -89,11 +89,11 @@ export function Form() {
               {...register("showClosed")}
               className="size-6 hover:cursor-pointer"
             />
-            <span className="ml-3 font-gotham-book text-xl text-dark-grey">
+            <span className="ml-3 font-gotham-book text-lg text-dark-grey sm:text-2xl">
               Exibir unidades fechadas
             </span>
           </div>
-          <p className="ml-2 font-gotham-book text-xl text-dark-grey">
+          <p className="ml-2 font-gotham-book text-lg text-dark-grey sm:text-2xl">
             Resultados encontrados:{" "}
             <span className="font-gotham-black">
               {filteredLocations.length}

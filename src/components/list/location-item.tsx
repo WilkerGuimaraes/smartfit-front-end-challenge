@@ -23,22 +23,22 @@ export function LocationItem({ location }: LocationItemProps) {
 
       <div className="flex gap-2 mt-4">
         {location.mask && (
-          <img width={75} height={75} src={`${location.mask}-mask.png`}></img>
+          <img width={65} height={65} src={`${location.mask}-mask.png`}></img>
         )}
         {location.towel && (
-          <img width={75} height={75} src={`${location.towel}-towel.png`}></img>
+          <img width={65} height={65} src={`${location.towel}-towel.png`}></img>
         )}
         {location.fountain && (
           <img
-            width={75}
-            height={75}
+            width={65}
+            height={65}
             src={`${location.fountain}-fountain.png`}
           ></img>
         )}
         {location.locker_room && (
           <img
-            width={75}
-            height={75}
+            width={65}
+            height={65}
             src={`${location.locker_room}-lockerroom.png`}
           ></img>
         )}
