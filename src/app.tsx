@@ -7,6 +7,7 @@ import { Locations } from "./components/list/locations";
 
 import { LocationProvider } from "./contexts/LocationsContext";
 import { Description } from "./components/description";
+import { Footer } from "./components/footer";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ export function App() {
           <Locations />
         </div>
       </LocationProvider>
+      <Footer />
     </QueryClientProvider>
   );
 }
