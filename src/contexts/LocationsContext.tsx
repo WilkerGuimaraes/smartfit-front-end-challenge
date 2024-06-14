@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
 import { ILocation, LocationRoot } from "../types/location";
 
@@ -25,10 +26,13 @@ export const LocationsContext = createContext({} as LocationContextType);
 export function LocationProvider({ children }: LocationProviderProps) {
   const { data: locationsResponse } = useQuery<LocationRoot>({
     queryKey: ["get-locations"],
-    queryFn: () =>
-      fetch(
+    queryFn: async () => {
+      const response = await axios.get(
         "https://test-frontend-developer.s3.amazonaws.com/data/locations.json"
-      ).then((res) => res.json()),
+      );
+
+      return response.data;
+    },
   });
 
   const [locationState, setLocationsState] = useState<ILocation[]>([]);
