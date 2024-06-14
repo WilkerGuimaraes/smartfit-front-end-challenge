@@ -59,19 +59,23 @@ export function LocationProvider({ children }: LocationProviderProps) {
     const filteredResult = locationState.filter((location) => {
       const isClosed = !location.opened || !location.schedules;
       const isInPeriod = location.schedules?.some((schedule) => {
+        if (isClosed) return false;
+
         const { start, end } = parseHour(schedule.hour);
 
-        if (period === "morning" && start >= 6 && end <= 12) return true;
-        if (period === "afternoon" && start >= 12 && end <= 18) return true;
-        if (period === "night" && start >= 18 && end <= 23) return true;
+        if (period === "morning" && start <= 6 && end >= 12) return true;
+        if (period === "afternoon" && start <= 12 && end >= 18) return true;
+        if (period === "night" && start <= 18 && end >= 21) return true;
 
         return false;
       });
 
       if (showClosed) {
         return isClosed || isInPeriod;
+      } else if (!showClosed && !period) {
+        return location.opened;
       } else {
-        return location.opened && isInPeriod;
+        return isInPeriod;
       }
     });
 
