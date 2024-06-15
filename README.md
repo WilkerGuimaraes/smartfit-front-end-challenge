@@ -2,6 +2,11 @@
 
 ## Preview
 
+
+https://github.com/WilkerGuimaraes/smartfit-front-end-challenge/assets/141461291/d3b26f95-b326-4b43-aab8-f955afdee809
+
+
+Deploy 🚀: https://wilkerguimaraes-smartsite-challenge.netlify.app/
 ## Funcionalidades
 
 - Através de um formulário, é possível filtrar unidades de academias abertas ou fechadas.
