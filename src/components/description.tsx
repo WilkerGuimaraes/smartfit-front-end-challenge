@@ -1,6 +1,6 @@
 export function Description() {
   return (
-    <div data-testId="description">
+    <div data-testid="description">
       <div className="flex flex-col justify-start px-8 gap-6">
         <h1 className="text-4xl font-gotham-bold text-dark-grey">
           REABERTURA
