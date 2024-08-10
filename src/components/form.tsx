@@ -32,7 +32,10 @@ export function Form() {
   };
 
   return (
-    <div className="rounded-lg border-[6px] border-zinc-200 p-6 mx-8">
+    <div
+      className="rounded-lg border-[6px] border-zinc-200 p-6 mx-8"
+      data-testId="form"
+    >
       <form onSubmit={handleSubmit(handleFilterLocations)}>
         <div className="flex items-center gap-4">
           <img src="/icon-hour.png" alt="iconHour" className="size-12" />
