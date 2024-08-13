@@ -34,7 +34,7 @@ export function Form() {
   return (
     <div
       className="rounded-lg border-[6px] border-zinc-200 p-6 mx-8"
-      data-testId="form"
+      data-testid="form"
     >
       <form onSubmit={handleSubmit(handleFilterLocations)}>
         <div className="flex items-center gap-4">
@@ -53,6 +53,7 @@ export function Form() {
               {...register("period")}
               value="morning"
               className="size-6 hover:cursor-pointer"
+              aria-label="Manhã"
             />
             <label htmlFor="morning">Manhã</label>
           </div>
@@ -98,8 +99,8 @@ export function Form() {
           </div>
           <p className="ml-2 font-gotham-book text-lg text-dark-grey sm:text-2xl">
             Resultados encontrados:{" "}
-            <span className="font-gotham-black">
-              {filteredLocations.length}
+            <span className="font-gotham-black" role="spanValue">
+              {filteredLocations ? filteredLocations.length : 0}
             </span>
           </p>
         </div>
