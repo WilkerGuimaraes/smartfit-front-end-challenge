@@ -20,6 +20,10 @@ const mockContextValue: {
   onSubmit: vitest.fn((data) => {
     if (data.period === "morning") {
       mockContextValue.filteredLocations = Array(62).fill({} as ILocation);
+    } else if (data.period === "afternoon" && data.showClosed) {
+      mockContextValue.filteredLocations = Array(134).fill({} as ILocation);
+    } else {
+      mockContextValue.filteredLocations = Array(0).fill({} as ILocation);
     }
   }),
   onReset: vitest.fn(() => {
@@ -28,7 +32,7 @@ const mockContextValue: {
 };
 
 describe("Form component testing", () => {
-  it("should filter morning period units", async () => {
+  it("should filter morning period", async () => {
     render(
       <QueryClientProvider client={queryClient}>
         <LocationsContext.Provider value={mockContextValue}>
@@ -46,5 +50,26 @@ describe("Form component testing", () => {
 
     const spanElement = await screen.findByRole("spanValue");
     expect(spanElement).toHaveTextContent("62");
+  });
+
+  it("should filter afternoon period with closed units", async () => {
+    render(
+      <QueryClientProvider client={queryClient}>
+        <LocationsContext.Provider value={mockContextValue}>
+          <Form />
+          <Locations />
+        </LocationsContext.Provider>
+      </QueryClientProvider>
+    );
+
+    const afternoonPeriod = screen.getByLabelText(/Tarde/i);
+
+    act(() => [
+      fireEvent.click(afternoonPeriod),
+      fireEvent.click(screen.getByText(/ENCONTRAR UNIDADE/i)),
+    ]);
+
+    const spanElement = await screen.findByRole("spanValue");
+    expect(spanElement).toHaveTextContent("134");
   });
 });
