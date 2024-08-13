@@ -81,6 +81,7 @@ export function Form() {
               {...register("period")}
               value="night"
               className="size-6 hover:cursor-pointer"
+              aria-label="Noite"
             />
             <label htmlFor="night">Noite</label>
           </div>
