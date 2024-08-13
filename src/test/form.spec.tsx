@@ -164,4 +164,36 @@ describe("Form component testing", () => {
     const spanElement = await screen.findByRole("spanValue");
     expect(spanElement).toHaveTextContent("93");
   });
+
+  it("should clear filtered locations", async () => {
+    render(
+      <QueryClientProvider client={queryClient}>
+        <LocationsContext.Provider value={mockContextValue}>
+          <Form />
+          <Locations />
+        </LocationsContext.Provider>
+      </QueryClientProvider>
+    );
+
+    const morningPeriod = screen.getByLabelText(/Manhã/i);
+    const checkboxElement = screen.getByRole("checkbox");
+    const submitButton = screen.getByText(/ENCONTRAR UNIDADE/i);
+
+    act(() => [
+      fireEvent.click(morningPeriod),
+      fireEvent.click(checkboxElement),
+      fireEvent.click(submitButton),
+    ]);
+
+    const spanElement = await screen.findByRole("spanValue");
+    expect(spanElement).toHaveTextContent("62");
+
+    const clearButton = screen.getByText(/Limpar/i);
+
+    act(() => [fireEvent.click(clearButton)]);
+
+    expect(spanElement).toHaveTextContent("0");
+    expect(morningPeriod).not.toBeChecked();
+    expect(checkboxElement).toBeChecked();
+  });
 });
